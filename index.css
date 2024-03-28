@@ -1,0 +1,13 @@
+#heading{
+    color: fuchsia;;
+}
+#parent{
+    color: blue;
+    background-color: yellow;
+    
+}
+#child{
+    color: red;
+    background-color: rgb(39, 29, 232);
+    
+}
