@@ -1,13 +1,41 @@
-#heading{
-    color: fuchsia;;
+.logo {
+  margin-top: 3px;
 }
-#parent{
-    color: blue;
-    background-color: yellow;
-    
+.container {
+  display: flex;
+  background-color: black;
+  color: white;
 }
-#child{
-    color: red;
-    background-color: rgb(39, 29, 232);
-    
+.search {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 200%;
+  height: 20px;
+}
+.search-input {
+  margin-left: 400px;
+  align-items: center;
+  border-radius: 15px;
+  width: 39%;
+  height: 35px;
+  margin-bottom: 20px;
+}
+.search-icon {
+  border: 2px solid white;
+  background-color: none;
+  border-radius: 50%;
+  height: 35px;
+
+  font-size: 20px;
+  cursor: pointer;
+}
+.user-icon {
+  margin-right: 20px;
+  padding: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+.user-icon:hover {
+  color: rgb(147, 147, 232);
 }

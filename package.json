@@ -8,8 +8,8 @@
     "argparse": "^2.0.1",
     "base-x": "^3.0.9",
     "boolbase": "^1.0.0",
+    "bootstrap": "^5.3.3",
     "braces": "^3.0.2",
-   
     "callsites": "^3.1.0",
     "caniuse-lite": "^1.0.30001605",
     "chalk": "^4.1.2",
@@ -102,6 +102,8 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "keywords": [
@@ -113,6 +115,7 @@
   "devDependencies": {
     "process": "^0.11.10"
   },
-  "browserslist": ["last 2  versions"]
-
+  "browserslist": [
+    "last 2  versions"
+  ]
 }
