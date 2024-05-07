@@ -1,41 +1,50 @@
-.logo {
-  margin-top: 3px;
-}
-.container {
+.header{
   display: flex;
-  background-color: black;
-  color: white;
+ background-color: orange;
+ color:black;
+  border: 1px solid black;
+  justify-content: space-between;
+  /* margin: 5px; */
 }
-.search {
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  width: 200%;
-  height: 20px;
+.logo{
+  width: 100px;
 }
-.search-input {
-  margin-left: 400px;
-  align-items: center;
-  border-radius: 15px;
-  width: 39%;
-  height: 35px;
-  margin-bottom: 20px;
+.logo-container{
+margin: 10px;
+padding: 5px;
 }
-.search-icon {
-  border: 2px solid white;
-  background-color: none;
-  border-radius: 50%;
-  height: 35px;
+.nav-items{
+  padding: 10px;
+  font-size: 24px;
+}
+.nav-items>ul{
+  display: flex;
 
+}
+.nav-items>ul>li{
+  padding: 10px;
+  cursor: pointer;
+  margin: 10px;
+  list-style-type: none;;
+}
+.search{
+  display: flex;
+  margin:auto;
+  margin-top: 20px;
+  max-width: 200px;
+}
+
+.search-input{
+  width: 200px;
+  /* background-color: aqua; */
+}
+.search-btn{
+  background-color: green;
+  color:white;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100px;
+  /* margin: 5px; */
   font-size: 20px;
   cursor: pointer;
-}
-.user-icon {
-  margin-right: 20px;
-  padding: 10px;
-  font-size: 30px;
-  cursor: pointer;
-}
-.user-icon:hover {
-  color: rgb(147, 147, 232);
 }

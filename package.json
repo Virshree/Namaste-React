@@ -6,6 +6,7 @@
     "abortcontroller-polyfill": "^1.7.5",
     "ansi-styles": "^4.3.0",
     "argparse": "^2.0.1",
+    "axios": "^1.6.8",
     "base-x": "^3.0.9",
     "boolbase": "^1.0.0",
     "bootstrap": "^5.3.3",
@@ -113,6 +114,7 @@
   "author": "Virshree Desai",
   "license": "ISC",
   "devDependencies": {
+    "buffer": "^6.0.3",
     "process": "^0.11.10"
   },
   "browserslist": [
