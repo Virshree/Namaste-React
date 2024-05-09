@@ -1,50 +1,47 @@
-.header{
+.header {
   display: flex;
- background-color: orange;
- color:black;
+  background-color: orange;
+  color: black;
   border: 1px solid black;
   justify-content: space-between;
-  /* margin: 5px; */
 }
-.logo{
+.logo {
   width: 100px;
 }
-.logo-container{
-margin: 10px;
-padding: 5px;
+.logo-container {
+  margin: 10px;
+  padding: 5px;
 }
-.nav-items{
+.nav-items {
   padding: 10px;
   font-size: 24px;
 }
-.nav-items>ul{
+.nav-items > ul {
   display: flex;
-
 }
-.nav-items>ul>li{
+.nav-items > ul > li {
   padding: 10px;
   cursor: pointer;
   margin: 10px;
-  list-style-type: none;;
+  list-style-type: none;
 }
-.search{
+.search {
   display: flex;
-  margin:auto;
+  margin: auto;
   margin-top: 20px;
   max-width: 200px;
 }
 
-.search-input{
+.search-input {
   width: 200px;
-  /* background-color: aqua; */
+
 }
-.search-btn{
+.search-btn {
   background-color: green;
-  color:white;
+  color: white;
   border-radius: 5px;
   padding: 5px;
   width: 100px;
-  /* margin: 5px; */
   font-size: 20px;
   cursor: pointer;
 }
