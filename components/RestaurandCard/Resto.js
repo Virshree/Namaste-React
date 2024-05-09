@@ -14,6 +14,8 @@ function Resto(props) {
            src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+
             cloudinaryImageId}
           alt="logo"
+          width="200px"
+          height="200px"
             className="img"
         />
         <h2>{name}</h2>
