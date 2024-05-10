@@ -45,3 +45,11 @@
   font-size: 20px;
   cursor: pointer;
 }
+.filter-btn{
+  margin: 15px;
+  cursor: pointer;
+  background-color: rgb(230, 212, 189);
+  color: brown;
+  font-size: larger;
+  border-radius: 10px;
+}

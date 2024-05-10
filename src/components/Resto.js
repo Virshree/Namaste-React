@@ -14,7 +14,6 @@ function Resto(props) {
     cloudinaryImageId,
     sla,
   } = resName?.info;
-
   return (
     <div className="resto">
       <div className="resto-img">
