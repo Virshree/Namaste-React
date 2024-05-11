@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
  import Resto from "./Resto";
+import Shimmer from "./Shimmer";
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
@@ -22,6 +23,9 @@ const res=await axios.get(url);
 
 }
 
+if(listOfRestaurant.length ===0){
+  return <Shimmer/>
+}
 
   return (
     <div className="body">
