@@ -4,7 +4,7 @@ import { CDN_URL } from "../utils/constants";
 
 function Resto(props) {
   const { resName } = props;
-
+// console.log(resName);
   const {
     name,
     avgRating,
@@ -27,12 +27,12 @@ function Resto(props) {
           height="200px"
           className="img"
         />
-        <h2>{name}</h2>
+         <h2>{name}</h2>
         <h4>{avgRating} ⭐ </h4>
-        <h4>{costForTwo}</h4>
-        <h4>{sla?.deliveryTime ? sla?.deliveryTime : 0} minutes</h4>
-        <h4>{cuisines.join(" , ")}</h4>
-        <h4>{locality}</h4>
+          <h4>{costForTwo}</h4>
+          <h4>{sla?.deliveryTime ? sla?.deliveryTime : 0} minutes</h4>
+          <h4>{cuisines.join(" , ")}</h4>
+          <h4>{locality}</h4>
       </div>
     </div>
   );

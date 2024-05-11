@@ -1,25 +1,35 @@
-import { useState } from "react";
-import Resto from "./Resto";
-import resObj from "../utils/resData";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+ import Resto from "./Resto";
 const Body = () => {
-  const [listOfRestaurant, setListOfRestaurant] = useState(resObj);
+  const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
 
 function handleSearch(e){
   // e.preventDefault();
   setSearchRestaurant(e.target.value);
   console.log(searchRestaurant);
-  setSearchRestaurant('');
-  alert(`The name is ${searchRestaurant}`)
 }
+useEffect(()=>{
+fetchData();
+},[])
+
+async function fetchData(){
+
+const url="https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9798657&lng=73.11873270000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING" 
+const res=await axios.get(url);     
+ setListOfRestaurant(res?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+}
+
+
   return (
     <div className="body">
       <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
-            let filteRestaurant = resObj?.filter(
+            let filteRestaurant = listOfRestaurant?.filter(
               (res) => res.info.avgRating > 4
             );
             console.log(filteRestaurant);
