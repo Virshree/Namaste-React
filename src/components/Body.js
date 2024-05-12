@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Resto from "./Resto";
 import Shimmer from "./Shimmer";
+import Header from "./Header";
 
 
 const Body = () => {
@@ -11,7 +12,7 @@ const Body = () => {
 
 
   useEffect(() => {
-    fetchData();
+    fetchData(); 
   }, []);
 
 
@@ -36,6 +37,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
+      <Header/>
       <div className="filter">
         <button
           className="filter-btn"

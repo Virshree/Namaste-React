@@ -2,13 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./App.css";
 import Body from "./components/Body";
-import Header from "./components/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
 
 const AppLayout = () => {
   return (
     <div className="app">
-      <Header />
-      <Body />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Body />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </BrowserRouter>
+     
     </div>
   );
 };
