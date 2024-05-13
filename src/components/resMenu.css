@@ -1,0 +1,35 @@
+.resMenu {
+  background-color: rgb(247, 244, 241);
+  width: 850px;
+  height: 300px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 35px;
+  border: 2px solid white;
+  justify-content: space-between;
+  font-size: 20px;
+  margin: 30px;
+  margin: auto;
+}
+.resName {
+  margin-left: 530px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  padding: 10px;
+  font-weight: bold;
+  color: black;
+}
+.cuisine-text {
+  width: 360px;
+
+  color: rgb(255, 123, 0);
+  font-size: 22px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.resCost{
+    color: rgb(129, 120, 120);
+    font-size: 20px;
+}

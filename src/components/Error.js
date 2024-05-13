@@ -1,8 +1,11 @@
 import React from 'react'
+import Header from './Header'
 
 const Error = () => {
   return (
-    <div><h2>This is Error page </h2></div>
+    <div>
+      <Header/>
+      <h2>This is Error page </h2></div>
   )
 }
 
