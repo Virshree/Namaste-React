@@ -3,7 +3,7 @@ import axios from "axios";
 import Resto from "./Resto";
 import Shimmer from "./Shimmer";
 import Header from "./Header";
-
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -37,7 +37,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <Header/>
+      {/* <Header/> */}
       <div className="filter">
         <button
           className="filter-btn"
@@ -46,7 +46,7 @@ const Body = () => {
               (res) => res?.info?.avgRating > 4
             );
             console.log(filterData);
-            setListOfRestaurant(filterData);
+            setFilteredRestaurant(filterData);
           }}
         >
           {" "}
@@ -78,8 +78,11 @@ const Body = () => {
       </div>
 
       <div className="resto-container">
-        {filteredRestaurant.map((restaurant, index) => (
-          <Resto key={index} resName={restaurant} />
+        {filteredRestaurant.map((restaurant) => (
+
+         <Link to={"/restaurant/"+restaurant?.info.id }  
+         style={{textDecoration:"none",color:"black"}}
+         key={restaurant?.info.id}> <Resto  resName={restaurant} /></Link>
         ))}
       </div>
     </div>

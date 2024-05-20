@@ -11,7 +11,7 @@ function Resto(props) {
     cuisines,
     locality,
     costForTwo,
-    cloudinaryImageId,
+    cloudinaryImageId,  
     sla,
   } = resName?.info;
   return (

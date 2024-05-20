@@ -78,3 +78,13 @@
   font-size: 24px;
   border: none;
 }
+.error{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* margin-left: 200px; */
+  justify-content: center;
+}
+.error h3{
+  color: red;
+}

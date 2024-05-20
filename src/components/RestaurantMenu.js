@@ -1,69 +1,88 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
 import axios from "axios";
 import "./resMenu.css";
+import Shimmer from "./Shimmer";
+import { useParams } from "react-router-dom";
+import { REST_INFO_API_URL } from "../utils/constants";
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState([]);
+  const [resInfo, setResInfo] = useState(null);
+  const [resMenu, setResMenu] = useState([]);
+
+
+  const { resId } = useParams();
+  console.log(resId);
 
   useEffect(() => {
     fetchMenu();
   }, []);
 
   async function fetchMenu() {
-    const url =
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=16.2893144&lng=80.4604643&restaurantId=123456";
-    const data = await axios.get(url);
-    console.log(data);
-    console.log(data?.data?.data?.cards[2]?.card?.card?.info?.name);
-    setResInfo(data);
+    // const url=(REST_INFO_API_URL + resId);
+    // const data = await axios.get(url);
+    const data = await fetch(REST_INFO_API_URL + resId);
+    const json = await data.json();
+    console.log(json?.data);
+
+    setResInfo(json?.data);
+    console.log("resMenu",resMenu);
+
+    setResMenu(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
+    console.log(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards)
+
+  
   }
+
+  if (resInfo === null) return <Shimmer />;
+
   // const {
-    
+  //   name,
   //   cuisines,
-  //   costForTwoMessage,
   //   avgRating,
-  //   city,
   //   totalRatingsString,
+  //   costForTwoMessage,
+  //   city,
   //   lastMileTravelString,
   //   costForTwo,
-  // } = resInfo?.data?.data?.cards[2]?.card?.card?.info;
+  // } = resInfo?.cards[2]?.card?.card?.info;
 
-  const itemCards =resInfo?.data?.data?.cards[4]?.groupedCard?.cardGroupMap?.
-  REGULAR?.cards[1]?.card?.card;
-  console.log(itemCards);
+  // console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
-
+  // console.log(
+  //   resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
+  //     ?.itemCards
+  // );
   return (
     <div className="menu">
-      <Header />
       <div>
-        <h2 className="resName">{resInfo?.data?.data?.cards[2]?.card?.card?.info?.name}</h2>
+        <h2 className="resName">{resInfo?.cards[2]?.card?.card?.info?.name}</h2>
         <div className="resMenu">
           <h4>
             {" "}
-            ★{resInfo?.data?.data?.cards[2]?.card?.card?.info?.avgRating}
-            ({resInfo?.data?.data?.cards[2]?.card?.card?.info?.totalRatingsString})
-            {resInfo?.data?.data?.cards[2]?.card?.card?.info?.costForTwoMessage}
-      
+            ★{resInfo?.cards[2]?.card?.card?.info?.avgRating}({resInfo?.cards[2]?.card?.card?.info?.totalRatingsString}){resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage}
           </h4>
 
-          <h3 className="cuisine-text">{resInfo?.data?.data?.cards[2]?.card?.card?.info?.cuisines.join(" ,")}</h3>
+          <h3 className="cuisine-text">{resInfo?.cards[2]?.card?.card?.info?.cuisines.join(" ,")}</h3>
 
-          <h4>{resInfo?.data?.data?.cards[2]?.card?.card?.info?.city}</h4> 
+         <h4>{resInfo?.cards[2]?.card?.card?.info?.city}</h4>
           <h5 className="resCost">
-            {resInfo?.data?.data?.cards[2]?.card?.card?.info?.lastMileTravelString} 1.2 kms | Rs.
-             {resInfo?.data?.data?.cards[2]?.card?.card?.info?.costForTwo} Delivery fee will
-            apply
+            {resInfo?.cards[2]?.card?.card?.info?.lastMileTravelString} 1.2 kms | Rs.
+            {resInfo?.cards[2]?.card?.card?.info?.costForTwo} Delivery fee will apply
           </h5>
         </div>
-        <div>
-          <h2>Menu</h2>
-          {/* {itemCards.map((items,index)=>{
-            <li key={index}>{items?.card?.info?.name}</li>
-          })} */}
-          <ul>
- 
-          </ul>
+        <div className="menu-items">
+          <h2>Recommended</h2>
+          <div>
+            <ul>
+
+
+              {resMenu?.map((item)=>{
+                return(
+                  
+                  <li key={item?.card?.info?.id}>{item?.card?.info?.name}-  Rs.{item?.card?.info?.defaultPrice/100} {item?.card?.info?.price/100}  </li>
+                )
+        
+            })}</ul>
+          </div>
         </div>
       </div>
     </div>

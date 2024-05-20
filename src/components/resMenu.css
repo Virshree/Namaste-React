@@ -13,6 +13,9 @@
   margin: 30px;
   margin: auto;
 }
+menu{
+  color: blueviolet;
+}
 .resName {
   margin-left: 530px;
   margin-top: 60px;
@@ -32,4 +35,13 @@
 .resCost{
     color: rgb(129, 120, 120);
     font-size: 20px;
+}
+.menu-items{
+  display: flex;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
