@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: #f0f0f0;
-    height: 550px;
+  height: 550px;
   width: 360px;
   align-items: center;
   margin-top: 20px;
@@ -26,4 +26,20 @@
   background-color: rgb(240, 255, 255);
   cursor: pointer;
   border-radius: 15px;
+}
+.item-card {
+  list-style-type: none;
+  flex-direction: column;
+}
+.menu-text {
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  inline-size: 590px;
+}
+.img-card {
+  float: right;
+  border: 1px solid black;
+
+  border-radius: 25px;
 }

@@ -88,3 +88,10 @@
 .error h3{
   color: red;
 }
+.user-info{
+  /* border:1px solid black;
+  width: 450px;
+  height: 200px; */
+  margin: 20px;
+  padding: 20px;
+}

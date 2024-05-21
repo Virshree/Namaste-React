@@ -3,11 +3,10 @@ import axios from "axios";
 import "./resMenu.css";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { REST_INFO_API_URL } from "../utils/constants";
+import { CDN_URL, REST_INFO_API_URL } from "../utils/constants";
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   const [resMenu, setResMenu] = useState([]);
-
 
   const { resId } = useParams();
   console.log(resId);
@@ -24,33 +23,20 @@ const RestaurantMenu = () => {
     console.log(json?.data);
 
     setResInfo(json?.data);
-    console.log("resMenu",resMenu);
+    console.log("resMenu", resMenu);
 
-    setResMenu(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-    console.log(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards)
-
-  
+    setResMenu(
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+        ?.card?.itemCards
+    );
+    console.log(
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+        ?.card?.itemCards
+    );
   }
 
   if (resInfo === null) return <Shimmer />;
 
-  // const {
-  //   name,
-  //   cuisines,
-  //   avgRating,
-  //   totalRatingsString,
-  //   costForTwoMessage,
-  //   city,
-  //   lastMileTravelString,
-  //   costForTwo,
-  // } = resInfo?.cards[2]?.card?.card?.info;
-
-  // console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-
-  // console.log(
-  //   resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-  //     ?.itemCards
-  // );
   return (
     <div className="menu">
       <div>
@@ -58,30 +44,51 @@ const RestaurantMenu = () => {
         <div className="resMenu">
           <h4>
             {" "}
-            ★{resInfo?.cards[2]?.card?.card?.info?.avgRating}({resInfo?.cards[2]?.card?.card?.info?.totalRatingsString}){resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage}
+            ★{resInfo?.cards[2]?.card?.card?.info?.avgRating}(
+            {resInfo?.cards[2]?.card?.card?.info?.totalRatingsString})
+            {resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage}
           </h4>
 
-          <h3 className="cuisine-text">{resInfo?.cards[2]?.card?.card?.info?.cuisines.join(" ,")}</h3>
+          <h3 className="cuisine-text">
+            {resInfo?.cards[2]?.card?.card?.info?.cuisines.join(" ,")}
+          </h3>
 
-         <h4>{resInfo?.cards[2]?.card?.card?.info?.city}</h4>
+          <h4>{resInfo?.cards[2]?.card?.card?.info?.city}</h4>
           <h5 className="resCost">
-            {resInfo?.cards[2]?.card?.card?.info?.lastMileTravelString} 1.2 kms | Rs.
-            {resInfo?.cards[2]?.card?.card?.info?.costForTwo} Delivery fee will apply
+            {resInfo?.cards[2]?.card?.card?.info?.lastMileTravelString} 1.2 kms
+            | Rs.
+            {resInfo?.cards[2]?.card?.card?.info?.costForTwo} Delivery fee will
+            apply
           </h5>
         </div>
         <div className="menu-items">
           <h2>Recommended</h2>
           <div>
             <ul>
+              {resMenu?.map((item) => {
+                return (
+                  <div className="item-card">
+                    <b>
+                      {" "}
+                      <li key={item?.card?.info?.id}>
+                        {item?.card?.info?.name}- Rs.
+                        {item?.card?.info?.defaultPrice / 100}{" "}
+                        {item?.card?.info?.price / 100}{" "}
+                      </li>
+                    </b>
 
-
-              {resMenu?.map((item)=>{
-                return(
-                  
-                  <li key={item?.card?.info?.id}>{item?.card?.info?.name}-  Rs.{item?.card?.info?.defaultPrice/100} {item?.card?.info?.price/100}  </li>
-                )
-        
-            })}</ul>
+                    <img
+                      className="img-card"
+                      src={CDN_URL + item?.card?.info?.imageId}
+                      alt="menu-item"
+                      width="200px"
+                      height="220px"
+                    />
+                    <p className="menu-text">{item?.card?.info?.description}</p>
+                  </div>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>
