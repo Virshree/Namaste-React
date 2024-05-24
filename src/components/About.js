@@ -10,22 +10,23 @@ constructor(props) {
 
   super(props);
 
-  console.log("Parent Constructor");
+  // console.log("Parent Constructor");
 
 
 }
 componentDidMount(){
-  console.log("Parent componentDidMount");
+  // console.log("Parent componentDidMount");
 }
 render(){
-  console.log("Parent Render");
+  // console.log("Parent Render");
 
   return (
     <div>
       
       <h2>This is About us page</h2>
       <User/>
-      <UserClass name="Virshree (class)" location="Panvel (class)" contact="virshreedesai19@gmail.com"/>
+      <UserClass name="First" location="Panvel" contact="virshreedesai19@gmail.com"/>
+    
       </div>
   )
 }
@@ -35,3 +36,25 @@ render(){
 
 
 export default About
+
+/**
+ * 
+ * Done in Render phase
+ * 
+ * Parent Constructor
+ * Parent Render
+ * 
+ * First Constructor
+ * First Render
+ * Second Constructor
+ * Second Render
+ *  
+ * Done in Commit phase
+ * <DOM> Manipulation phase of SINGLE BATCHED DOM
+ * 
+ * First ComponentDidMount
+ * Second ComponentDidMount
+ * Parent ComponentDidMount
+ *
+ * 
+ */

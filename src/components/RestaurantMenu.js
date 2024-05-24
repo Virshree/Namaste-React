@@ -1,94 +1,87 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import "./resMenu.css";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { CDN_URL, REST_INFO_API_URL } from "../utils/constants";
-const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  const [resMenu, setResMenu] = useState([]);
+import { CDN_URL } from "../utils/constants";
 
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+
+const RestaurantMenu = () => {
   const { resId } = useParams();
   console.log(resId);
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  async function fetchMenu() {
-    // const url=(REST_INFO_API_URL + resId);
-    // const data = await axios.get(url);
-    const data = await fetch(REST_INFO_API_URL + resId);
-    const json = await data.json();
-    console.log(json?.data);
-
-    setResInfo(json?.data);
-    console.log("resMenu", resMenu);
-
-    setResMenu(
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards
-    );
-    console.log(
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards
-    );
-  }
+  const resInfo = useRestaurantMenu(resId);
+  console.log(resInfo);
 
   if (resInfo === null) return <Shimmer />;
+
+  const {
+    name,
+    avgRating,
+    cuisines,
+    costForTwoMessage,
+    totalRatingsString,
+    city,
+    lastMileTravelString,
+    costForTwo,
+  } = resInfo?.cards[2]?.card?.card?.info;
+
+  const { itemCards } =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
   return (
     <div className="menu">
       <div>
-        <h2 className="resName">{resInfo?.cards[2]?.card?.card?.info?.name}</h2>
+        <h2 className="resName">{name}</h2>
         <div className="resMenu">
           <h4>
             {" "}
-            ★{resInfo?.cards[2]?.card?.card?.info?.avgRating}(
-            {resInfo?.cards[2]?.card?.card?.info?.totalRatingsString})
-            {resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage}
+            ★{avgRating}({totalRatingsString}){costForTwoMessage}
           </h4>
 
-          <h3 className="cuisine-text">
-            {resInfo?.cards[2]?.card?.card?.info?.cuisines.join(" ,")}
-          </h3>
+          <h3 className="cuisine-text">{cuisines.join(" ,")}</h3>
 
-          <h4>{resInfo?.cards[2]?.card?.card?.info?.city}</h4>
+          <h4>{city}</h4>
+          <hr/>
           <h5 className="resCost">
-            {resInfo?.cards[2]?.card?.card?.info?.lastMileTravelString} 1.2 kms
-            | Rs.
-            {resInfo?.cards[2]?.card?.card?.info?.costForTwo} Delivery fee will
-            apply
+            {lastMileTravelString} 2.5 kms | ₹
+            {costForTwo/100} Delivery fee will apply
           </h5>
         </div>
+
         <div className="menu-items">
-          <h2>Recommended</h2>
           <div>
+            <h2>Recommended({itemCards.length})</h2>
             <ul>
-              {resMenu?.map((item) => {
+              {itemCards?.map((item) => {
                 return (
-                  <div className="item-card">
+                  <div className="card-menu" key={item?.card?.info?.id}>
+                    {" "}
+          
                     <b>
                       {" "}
-                      <li key={item?.card?.info?.id}>
-                        {item?.card?.info?.name}- Rs.
-                        {item?.card?.info?.defaultPrice / 100}{" "}
-                        {item?.card?.info?.price / 100}{" "}
+                      <li>
+                        {item?.card?.info?.name}- ₹
+                        
+                        {item?.card?.info?.price / 100 ||
+                          item?.card?.info?.defaultPrice / 100}{" "}
                       </li>
                     </b>
-
+                    
                     <img
-                      className="img-card"
+                      className="imgs-card"
                       src={CDN_URL + item?.card?.info?.imageId}
-                      alt="menu-item"
+                      alt="logo"
                       width="200px"
-                      height="220px"
+                      height="250px"
                     />
+                   
                     <p className="menu-text">{item?.card?.info?.description}</p>
+                    <hr/>
                   </div>
                 );
               })}
             </ul>
+           
           </div>
         </div>
       </div>

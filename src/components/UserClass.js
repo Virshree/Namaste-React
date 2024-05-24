@@ -1,40 +1,48 @@
-import {Component} from "react";
-
+import { Component } from "react";
 
 class UserClass extends Component {
-    constructor(props){
-        super(props);
-        // console.log(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
+    this.state = {
+      userInfo: {
+        name: "Dummy",
+        location: "uk",
+      },
+    };
+    // console.log("Constructor ")
+  }
 
-            count:0,
-            count2:1
-        }
+  async componentDidMount() {
+    // this.timer=setInterval(() => {
+    //     console.log("Namaste react ")
+    // },1000)
 
-        console.log("Chld Constructor");
-    }
-componentDidMount(){
-    console.log("Child Component didMount");
+    const data = await fetch("https://api.github.com/users/Virshree");
+    const json = await data.json();
+    console.log(json);
+    this.setState({ userInfo: json });
+    //    console.log("Component Did Mount");
+  }
 
-}
-    render() {
+  componentDidUpdate() {
+    // console.log("Component Did Update");
+  }
+  componentWillUnmount() {
+    // clearInterval(this.timer)
+    // console.log("Component Will Unmount");
+  }
 
-        console.log("Child Rendering");
-    
-        const {name,location,contact}=this.props
-        return(
-            <div className="user-info">
-                <h1>Count:{this.state.count}</h1>
-                <h1>Count2:{this.state.count2}</h1>
-                <button onClick={()=>{
-                    this.setState({count:this.state.count+1});
-                }}>Count </button>
-                <h1>{name}</h1>
-                <h3>Location:{location}</h3>
-                <h4>Contact:{contact}</h4>
-            </div>
-        )
-            }
+  render() {
+    // console.log("Render");
+
+    const { login, avatar_url } = this.state.userInfo;
+    return (
+      <div className="user-info">
+        <img src={avatar_url} alt="logo" />
+        <h1>{login}</h1>
+      </div>
+    );
+  }
 }
 export default UserClass;

@@ -1,23 +1,22 @@
 .resMenu {
-  background-color: rgb(247, 244, 241);
-  width: 850px;
+  background-color: rgb(255, 254, 253);
+  width: 950px;
   height: 300px;
   color: black;
   display: flex;
   flex-direction: column;
   padding: 20px;
   border-radius: 35px;
-  border: 2px solid white;
+  border: 2px solid rgb(241, 238, 238);
   justify-content: space-between;
   font-size: 20px;
   margin: 30px;
   margin: auto;
+  box-shadow: 25px 35px  35px 51px rgb(245, 245, 245);
 }
-menu{
-  color: blueviolet;
-}
+
 .resName {
-  margin-left: 530px;
+  margin-left: 480px;
   margin-top: 60px;
   margin-bottom: 30px;
   padding: 10px;
@@ -32,16 +31,67 @@ menu{
   text-decoration: underline;
   cursor: pointer;
 }
-.resCost{
-    color: rgb(129, 120, 120);
-    font-size: 20px;
-}
-.menu-items{
-  display: flex;
-  margin-top: 20px;
-  padding: 10px;
+.resCost {
+  color: rgb(129, 120, 120);
   font-size: 20px;
-  flex-direction: column;
+}
+
+.menu-items {
+  display: flex;
+  margin: auto;
+ 
+  margin: 20px;
+  font-size: 20px;
   align-items: center;
   justify-content: center;
+}
+.imgs-card {
+ 
+  float: right;
+
+  cursor: pointer;
+  
+  margin: 25px;
+
+  border-radius: 25px;
+  width: 200px; /* Ensure size consistency */
+  height: 200px; /* Ensure size consistency */
+}
+
+.menu-text {
+  
+  display: flex;
+  
+  font-style: normal;
+  /* width: 650px; */
+  inline-size: 700px;
+  margin: 10px;
+}
+.item-card {
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+}
+.add-btn{
+
+ background-color: rgb(31, 166, 21);
+ color: white;
+ border-radius: 5px;
+ top:-120%;
+ left:200px;
+ right:90px;
+ bottom: 30px;
+ position: relative;
+}
+.card-menu{
+  width: 950px;
+position: relative; 
+list-style-type: none;
+ /* display: inline-block; */
+
+}
+.menu-items h2{
+  margin-top: 20px;
+  margin-right: 540px;
+ 
 }

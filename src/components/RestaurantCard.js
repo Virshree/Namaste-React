@@ -2,7 +2,7 @@ import React from "react";
 import "./resto.css";
 import { CDN_URL } from "../utils/constants";
 
-function Resto(props) {
+function RestaurantCard(props) {
   const { resName } = props;
 
   const {
@@ -35,4 +35,4 @@ function Resto(props) {
   );
 }
 
-export default Resto;
+export default RestaurantCard;
