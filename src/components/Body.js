@@ -3,11 +3,13 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import { RESTAURANT_API } from "../utils/constants";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
+import {check }from "../assets/check.jpeg";
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+
 
   useEffect(() => {
     fetchData();
@@ -17,7 +19,7 @@ const Body = () => {
 
     const res = await fetch(RESTAURANT_API);
     const json = await res.json();
-    console.log(json?.data);
+    // console.log(json?.data);
     console.log(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -29,6 +31,12 @@ const Body = () => {
     );
     // console.log(filteredRestaurant);
   }
+  const onlineStatus=useOnlineStatus();
+
+   if(onlineStatus === false)
+   return (
+    <h2 >Check Internet connection ⚠️</h2>
+  )
 
   //conditional  rendering
 

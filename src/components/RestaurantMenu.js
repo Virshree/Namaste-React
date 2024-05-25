@@ -10,7 +10,7 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
   console.log(resId);
   const resInfo = useRestaurantMenu(resId);
-  console.log(resInfo);
+  // console.log(resInfo);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -21,7 +21,6 @@ const RestaurantMenu = () => {
     costForTwoMessage,
     totalRatingsString,
     city,
-    lastMileTravelString,
     costForTwo,
   } = resInfo?.cards[2]?.card?.card?.info;
 
@@ -43,7 +42,7 @@ const RestaurantMenu = () => {
           <h4>{city}</h4>
           <hr/>
           <h5 className="resCost">
-            {lastMileTravelString} 2.5 kms | ₹
+           2.5 kms | ₹
             {costForTwo/100} Delivery fee will apply
           </h5>
         </div>
