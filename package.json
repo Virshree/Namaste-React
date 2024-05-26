@@ -115,8 +115,14 @@
   "author": "Virshree Desai",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.4.19",
     "buffer": "^6.0.3",
-    "process": "^0.11.10"
+    "postcss": "^8.4.38",
+    "postcss-custom-properties": "^13.3.10",
+    "postcss-modules": "^4.3.1",
+    "postcss-url": "^10.1.3",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.3"
   },
   "browserslist": [
     "last 2  versions"

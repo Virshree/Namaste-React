@@ -8,63 +8,32 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status :{onlineStatus ? " 🟢 " : "🔴"}</li>
+    <div className="flex justify-between p-4 bg-pink-100 shadow-lg">
+      <img className="w-36" src={LOGO_URL} />
 
-          <Link
-            to="/"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              listStyle: "none",
-              margin: "20px",
-            }}
-          >
+      <div className="nav-items">
+        <ul className="flex m-2 p-4">
+          <li className="p-4 text-xl">
+            Online Status :{onlineStatus ? " 🟢 " : "🔴"}
+          </li>
+
+          <Link to="/" className="p-4 text-xl">
             <li>Home</li>
           </Link>
-          <Link
-            to="/grocery"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              listStyle: "none",
-              margin: "20px",
-            }}
-          >
+          <Link to="/grocery" className="p-4 text-xl">
             <li>Grocery</li>
           </Link>
-          <Link
-            to="/about"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              listStyle: "none",
-              margin: "20px",
-            }}
-          >
+          <Link to="/about" className="p-4 text-xl">
             {" "}
             <li>About us</li>
           </Link>
-          <Link
-            to="/contact"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              listStyle: "none",
-              margin: "20px",
-            }}
-          >
+          <Link to="/contact" className="p-4 text-xl">
             {" "}
             <li>Contact us</li>
           </Link>
-          <li>Cart</li>
+          <li className="p-4 text-xl">Cart</li>
           <button
-            className="login-btn"
+            className="p-4 text-xl"
             onClick={() => {
               setBtnLogin("Logout");
             }}
