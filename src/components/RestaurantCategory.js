@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ resList }) => {
-  //   console.log(resList?.title);
+const RestaurantCategory = ({ resList ,showItems,setShowIndex}) => {
 
-  const [showItems, setShowItems] = useState(false);
 
   function handleClick() {
-    // console.log("clicked");
-    setShowItems(!showItems);
+    setShowIndex();
+
   }
   return (
     <div className="bg-white-900 shadow-lg border border-b-1 mt-8 ">

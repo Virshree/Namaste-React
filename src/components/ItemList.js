@@ -2,7 +2,7 @@ import React from "react";
 import { CDN_URL } from "../utils/constants";
 
 const ItemList = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       {data?.map((items) => (
@@ -27,7 +27,7 @@ const ItemList = ({ data }) => {
             </p>
           </div>
           <div className="w-3/12 p-4  ">
-            <button className=" bg-pink-200 text-xl mx-8 mt-4 w-24 px-1  absolute">
+            <button className=" bg-stone-900  text-white text-xl  ms-12  m-[120px]  w-24  absolute">
               ADD+
             </button>
             <img

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
@@ -12,6 +12,7 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId);
   // console.log(resInfo);
 
+  const [showIndex,setShowIndex]=useState(null);
   if (resInfo === null) return <Shimmer />;
 
   const {
@@ -57,53 +58,20 @@ const RestaurantMenu = () => {
         </div>
 
         <div className="w-6/12 cursor-pointer">
-          {categories?.map((category) => {
+          {categories?.map((category,index) => {
             return (
               <div className="">
                 <RestaurantCategory
                   resList={category?.card?.card}
                   key={category?.card?.info?.id}
+                  showItems={index=== showIndex ? true : false}
+                   setShowIndex={()=>setShowIndex(index)}
                 />
               </div>
             );
           })}
         </div>
-        {/* <div className="menu-items">
-          <div>
-            <h2>Recommended({itemCards.length})</h2>
-            <ul>
-              {itemCards?.map((item) => {
-                return (
-                  <div className="card-menu" key={item?.card?.info?.id}>
-                    {" "}
-          
-                    <b>
-                      {" "}
-                      <li>
-                        {item?.card?.info?.name}- ₹
-                        
-                        {item?.card?.info?.price / 100 ||
-                          item?.card?.info?.defaultPrice / 100}{" "}
-                      </li>
-                    </b>
-                    
-                    <img
-                      className="imgs-card"
-                      src={CDN_URL + item?.card?.info?.imageId}
-                      alt="logo"
-                      width="200px"
-                      height="250px"
-                    />
-                   
-                    <p className="menu-text">{item?.card?.info?.description}</p>
-                    <hr/>
-                  </div>
-                );
-              })}
-            </ul>
-           
-          </div>
-        </div> */}
+       
       </div>
     </div>
   );

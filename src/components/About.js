@@ -3,6 +3,7 @@ import User from './User';
 import UserClass from './UserClass';
 
 import {Component} from "react";
+import UserContext from "../utils/UserContext";
 
 
 class About extends Component {
@@ -24,6 +25,11 @@ render(){
     <div>
       
       <h2>This is About us page</h2>
+      <div>
+        <UserContext.Consumer>
+          {({loggedUser})=><h2 className="text-xl font-bold">{loggedUser}</h2>}
+        </UserContext.Consumer>
+      </div>
       <User/>
       <UserClass name="First" location="Panvel" contact="virshreedesai19@gmail.com"/>
     

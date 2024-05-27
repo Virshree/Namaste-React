@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 function RestaurantCard(props) {
   const { resName } = props;
@@ -15,6 +16,8 @@ function RestaurantCard(props) {
     aggregatedDiscountInfoV3,
     sla,
   } = resName?.info;
+  const {loggedUser}=useContext(UserContext);
+  // console.log(loggedUser);
   return (
     <div className="m-4 p-4 w-80 flex-col bg-gray-100 text-xl rounded-lg hover:bg-gray-200">
       <label className="bg-stone-950	 text-white mb-2 p-2 rounded-lg ">
@@ -40,6 +43,7 @@ function RestaurantCard(props) {
 
       <h4 className="text-gray-500 py-2">{cuisines.join(" , ")}</h4>
       <h4 className="uppercase">{locality}</h4>
+      <h4>User:{loggedUser}</h4>
     </div>
   );
 }
