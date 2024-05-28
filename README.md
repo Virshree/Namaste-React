@@ -12,3 +12,12 @@ Namaste React
 - Footer
     -Coyright
     -Links
+
+
+- Redux-Toolkit
+-   Install reduxtoolkit and react-redux to our app
+-   Build our store
+-   Connect our store to app
+-   Slice(Cart Slice)
+-   Dispatch action and send it to reducer function
+-   Selector to recieve the updated data to cart button 

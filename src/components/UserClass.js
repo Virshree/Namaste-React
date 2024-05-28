@@ -22,7 +22,7 @@ class UserClass extends Component {
     const json = await data.json();
     // console.log(json);
     this.setState({ userInfo: json });
-    //    console.log("Component Did Mount");
+      //  console.log("Component Did Mount");
   }
 
   componentDidUpdate() {
