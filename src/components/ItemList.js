@@ -2,6 +2,8 @@ import React from "react";
 import { CDN_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import {addItems}  from '../utils/cartSlice';
+import { toast ,ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ItemList = ({ data }) => {
   // console.log(data);
@@ -9,8 +11,9 @@ const ItemList = ({ data }) => {
 
 
   const handleAddItem=(items)=>{
-    disptach(addItems(items))
-
+    disptach(addItems(items));
+    toast.success("Item Added Sucessfully !")
+ 
   }
   return (
     <div>
@@ -39,6 +42,8 @@ const ItemList = ({ data }) => {
             <button className=" bg-stone-900  text-white text-xl  ms-12  m-[120px]  w-24  absolute"
              onClick={()=>handleAddItem(items)}>
               ADD+
+              <ToastContainer limit={1} position={"top-center"}/>
+
             </button>
             <img
               src={CDN_URL + items?.card?.info?.imageId}
