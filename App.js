@@ -13,6 +13,7 @@ import UserContext from "./src/utils/UserContext";
 import appStore from "./src/utils/appStore";
 import { Provider } from "react-redux";
 import Cart from "./src/components/Cart";
+
 // import Grocery from "./src/components/Grocery";
 
 const App = () => {
@@ -26,15 +27,18 @@ const App = () => {
     setUserName(data.name)
   },[])
   return (
-    <Provider store={appStore}>
+    <div className="">
+    <Provider store={appStore} >
     <UserContext.Provider  value={{loggedUser:userName,setUserName}}>
     <div className="app">
     
       <Header />
+      
       <Outlet />
     </div>
     </UserContext.Provider>
     </Provider>
+    </div>
   );
 };
 
