@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "This is React class",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.2.5",
     "abortcontroller-polyfill": "^1.7.5",
     "ansi-styles": "^4.3.0",

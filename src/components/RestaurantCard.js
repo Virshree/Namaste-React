@@ -6,6 +6,7 @@ import UserContext from "../utils/UserContext";
 function RestaurantCard(props) {
   const { resName } = props;
 
+
   const {
     name,
     avgRating,

@@ -17,8 +17,8 @@ const Header = () => {
   // console.log(cartItems);
 
   return (
-    <div className="flex justify-between p-4 bg-pink-100 shadow-lg">
-      <img className="w-36" src={LOGO_URL} />
+    <div className="flex justify-between p-4 bg-azure-100 shadow-lg">
+      <img className="w-26 h-24 cursor-pointer" src={LOGO_URL} />
 
       <div className="nav-items">
         <ul className="flex m-2 p-4">
@@ -42,7 +42,7 @@ const Header = () => {
           </Link>
           <Link to="/cart" className="p-4 text-xl">
             {" "}
-            <li>Cart- {cartItems.length} items</li>
+            <li>Cart- {cartItems.length}</li>
           </Link>
 
           

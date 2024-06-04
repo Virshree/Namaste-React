@@ -13,6 +13,7 @@ import UserContext from "./src/utils/UserContext";
 import appStore from "./src/utils/appStore";
 import { Provider } from "react-redux";
 import Cart from "./src/components/Cart";
+import Shimmer from "./src/components/Shimmer";
 
 // import Grocery from "./src/components/Grocery";
 
@@ -60,7 +61,7 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/",
-        element: <Body />,
+        element: <Suspense fallback={<Shimmer/>}><Body /></Suspense>,
       },
       {
         path: "/contact",
