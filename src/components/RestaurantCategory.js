@@ -14,7 +14,7 @@ const RestaurantCategory = ({ resList ,showItems,setShowIndex}) => {
         <span className="font-bold text-xl m-2 ">
           {resList?.title} ({resList?.itemCards?.length})
         </span>
-        <span className="">▼</span>
+        <span> {showItems ==true? "⬆":  "⬇"}</span>
       </div>
       <div className="m-2 p-1">
         {showItems && <ItemList data={resList?.itemCards} />}

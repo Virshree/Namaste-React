@@ -8,7 +8,7 @@ import Contact from "./src/components/Contact";
 import Error from "./src/components/Error";
 import RestaurantMenu from "./src/components/RestaurantMenu";
 import Header from "./src/components/Header";
-import Shimmer from "./src/components/Shimmer";
+// import Shimmer from "./src/components/Shimmer";
 import UserContext from "./src/utils/UserContext";
 import appStore from "./src/utils/appStore";
 import { Provider } from "react-redux";
@@ -55,9 +55,7 @@ export const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense fallback={<Shimmer />}>
             <About />
-          </Suspense>
         ),
       },
       {
@@ -71,15 +69,16 @@ export const appRouter = createBrowserRouter([
       {
         path: "/grocery",
         element: (
-          <Suspense fallback={<Shimmer />}>
-            {" "}
             <Grocery />
-          </Suspense>
         ),
       },
       {
         path: "/restaurant/:resId",
-        element: <RestaurantMenu />,
+        element: 
+ 
+           <RestaurantMenu />,
+    
+      
       },
       {
         path: "/cart",
