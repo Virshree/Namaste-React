@@ -6,10 +6,10 @@ function MenuName(props) {
     // console.log(resMenuList?.action?.text);
 
   return (
-    <div className='p-2 '>
+    <div className='p-2   '>
       
      
-        <img src={CDN_URL + resMenuList?.imageId} alt="logo"  width="220px "className="
+        <img src={CDN_URL + resMenuList?.imageId} alt="logo"  width="400px "className=" ml-48
         cursor-pointer"/>
 
         

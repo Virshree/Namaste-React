@@ -14,6 +14,8 @@ import appStore from "./src/utils/appStore";
 import { Provider } from "react-redux";
 import Cart from "./src/components/Cart";
 import Shimmer from "./src/components/Shimmer";
+import { ChakraProvider } from "@chakra-ui/react";
+
 
 // import Grocery from "./src/components/Grocery";
 
@@ -29,6 +31,7 @@ const App = () => {
   },[])
   return (
     <div className="">
+<ChakraProvider>
     <Provider store={appStore} >
     <UserContext.Provider  value={{loggedUser:userName,setUserName}}>
     <div className="app">
@@ -39,6 +42,8 @@ const App = () => {
     </div>
     </UserContext.Provider>
     </Provider>
+    </ChakraProvider>
+
     </div>
   );
 };

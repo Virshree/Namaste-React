@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import Drawer from "./Drawer";
+import LoginDrawer from "./LoginDrawer";
 
 const Header = () => {
   const [btnLogin, setBtnLogin] = useState("Login");
@@ -17,8 +19,23 @@ const Header = () => {
   // console.log(cartItems);
 
   return (
-    <div className="flex justify-between p-4 bg-azure-100 shadow-lg">
+    <div className="flex justify-between p-2 bg-azure-100 shadow-lg">
+      <div className="flex ">
+
+ 
+      <Link to="/" >
       <img className="w-26 h-24 cursor-pointer" src={LOGO_URL} />
+
+      </Link>
+    
+    <button className=" m-2 p-4 text-left">
+    <Drawer/>
+    </button>
+
+       
+    </div>
+      
+   
 
       <div className="nav-items">
         <ul className="flex m-2 p-4">
@@ -53,9 +70,10 @@ const Header = () => {
               setBtnLogin("Logout");
             }}
           >
-            {btnLogin}
+            {/* {btnLogin} */}
+            <LoginDrawer/>
           </button>
-          <li className="p-4 text-xl font-bold"> {loggedUser}</li>
+          {/* <li className="p-4 text-xl font-bold"> {loggedUser}</li> */}
         </ul>
       </div>
     </div>
