@@ -1,10 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import { RESTAURANT_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
 import MenuName from "./MenuName";
+import CityMenu from "./CityMenu";
+import CuisineMenu from "./CuisineMenu";
+import ExploreMenu from "./ExploreMenu";
+import Footer from "./Footer";
 
 const Body = () => {
   const [itemInfo, setItemInfo] = useState([]);
@@ -12,7 +15,23 @@ const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [cityMenu, setCityMenu] = useState([]);
+  const [cuisneMenu, setCuisneMenu] = useState([]);
+  const [exploreMenu, setExploreMenu] = useState([]);
 
+  const cityMenuItem = 11;
+  const [next, setNext] = useState(cityMenuItem);
+
+  const cuisineMenuItem = 11;
+  const [cuisineNext, setCuisineNext] = useState(cuisineMenuItem);
+
+  const handleMoreMenuItems = () => {
+    setNext(next + cityMenuItem);
+  };
+
+  const handleMoreCuisineItem = () => {
+    setCuisineNext(cuisineNext + cuisineMenuItem);
+  };
   useEffect(() => {
     fetchData();
   }, []);
@@ -22,18 +41,20 @@ const Body = () => {
     const json = await res.json();
     // console.log(json?.data);
 
+    setExploreMenu(json.data?.cards[8]?.card?.card?.brands);
+
+    setCuisneMenu(json.data?.cards[7]?.card?.card?.brands);
+    setCityMenu(json?.data?.cards[6]?.card?.card?.brands);
+
     setItemInfo(
       json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
     );
-    // console.log(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info)
     setListOfRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    // console.log(itemInfo);
-    //  console.log(filteredRestaurant);
   };
 
   const onlineStatus = useOnlineStatus();
@@ -41,8 +62,6 @@ const Body = () => {
   if (onlineStatus === false) return <h2>Check Internet connection ⚠️</h2>;
 
   //conditional  rendering
-
-
 
   return (
     <div className="mt-6">
@@ -55,7 +74,7 @@ const Body = () => {
       overflow-x-scroll  "
       >
         {itemInfo?.map((menu) => {
-          return <MenuName key={menu.id} resMenuList={menu}  />;
+          return <MenuName key={menu.id} resMenuList={menu} />;
         })}
       </div>
       <hr />
@@ -97,7 +116,6 @@ const Body = () => {
               {" "}
               Top Rated Restaurant
             </button>
-           
           </div>
         </div>
         <hr />
@@ -121,7 +139,61 @@ const Body = () => {
             </Link>
           ))}
         </div>
+
+        <hr />
+        <h3 className="font-bold text-3xl mt-14 p-5">
+          Best Places to Eat Across the Cities
+        </h3>
+        <div className=" pr-28 grid grid-cols-4 gap-4 mb-9">
+          {cityMenu?.slice(0, next)?.map((city) => {
+            return (
+              <div>
+                <CityMenu resCity={city} id={city?.id} />
+              </div>
+            );
+          })}
+
+          {next <= cityMenu?.length && (
+            <button
+              className="mt-4  bg-white-400  text-xl   p-2 border border-gray rounded-xl"
+              onClick={() => handleMoreMenuItems()}
+            >
+              Show More ⬇
+            </button>
+          )}
+        </div>
+
+        <hr />
+        <h3 className="font-bold text-3xl mt-14 p-5">Best Cuisines Near Me</h3>
+        <div className="pr-28 grid grid-cols-4 gap-4 mb-9">
+          {cuisneMenu?.slice(0, cuisineNext)?.map((cuisine) => {
+            return <CuisineMenu resCuisine={cuisine} key={cuisine?.id} />;
+          })}
+
+          {cuisineNext <= cuisneMenu.length && (
+            <button
+              className=" bg-white-400  text-xl p-3  border border-gray
+             rounded-xl"
+              onClick={() => handleMoreCuisineItem()}
+            >
+              {" "}
+              Show More ⬇
+            </button>
+          )}
+        </div>
+
+        <hr />
+        <h3 className="font-bold text-3xl mt-14 p-5">
+          Explore Every Restaurants Near Me
+        </h3>
+        <div className="pr-28 grid grid-cols-2 gap-2 mb-9">
+          {exploreMenu?.map((explore) => {
+            return <ExploreMenu resExplore={explore} id={explore?.id} />;
+          })}
+        </div>
+       
       </div>
+      <Footer/>
     </div>
   );
 };
