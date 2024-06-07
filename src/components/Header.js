@@ -12,30 +12,23 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  const {loggedUser} = useContext(UserContext);
+  const { loggedUser } = useContext(UserContext);
   // console.log(loggedUser);
 
-  const cartItems=useSelector((store)=>store.cart.items);
+  const cartItems = useSelector((store) => store?.cart?.items);
   // console.log(cartItems);
 
   return (
     <div className="flex justify-between p-2 bg-azure-100 shadow-lg">
       <div className="flex ">
+        <Link to="/">
+          <img className="w-26 h-24 cursor-pointer" src={LOGO_URL} />
+        </Link>
 
- 
-      <Link to="/" >
-      <img className="w-26 h-24 cursor-pointer" src={LOGO_URL} />
-
-      </Link>
-    
-    <button className=" m-2 p-4 text-left">
-    <Drawer/>
-    </button>
-
-       
-    </div>
-      
-   
+        <button className=" m-2 p-4 text-left">
+          <Drawer />
+        </button>
+      </div>
 
       <div className="nav-items">
         <ul className="flex m-2 p-4">
@@ -62,8 +55,6 @@ const Header = () => {
             <li>Cart- {cartItems.length}</li>
           </Link>
 
-          
-         
           <button
             className="p-4 text-xl"
             onClick={() => {
@@ -71,7 +62,7 @@ const Header = () => {
             }}
           >
             {/* {btnLogin} */}
-            <LoginDrawer/>
+            <LoginDrawer />
           </button>
           {/* <li className="p-4 text-xl font-bold"> {loggedUser}</li> */}
         </ul>

@@ -15,6 +15,8 @@ import { Provider } from "react-redux";
 import Cart from "./src/components/Cart";
 import Shimmer from "./src/components/Shimmer";
 import { ChakraProvider } from "@chakra-ui/react";
+import { createStore } from "@reduxjs/toolkit";
+import CartReducer from './src/utils/cartSlice';
 
 
 // import Grocery from "./src/components/Grocery";
@@ -22,6 +24,9 @@ import { ChakraProvider } from "@chakra-ui/react";
 const App = () => {
 
   const[userName,setUserName]=useState();
+
+ 
+
 
   useEffect(()=>{
     const data={

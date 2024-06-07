@@ -11,7 +11,6 @@ import Footer from "./Footer";
 
 const Body = () => {
   const [itemInfo, setItemInfo] = useState([]);
-
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
@@ -34,6 +33,7 @@ const Body = () => {
   };
   useEffect(() => {
     fetchData();
+   
   }, []);
 
   const fetchData = async () => {
@@ -63,6 +63,7 @@ const Body = () => {
 
   //conditional  rendering
 
+
   return (
     <div className="mt-6">
       <h2 className="text-3xl font-bold ml-56  ">What's on your mind ?</h2>
@@ -90,14 +91,14 @@ const Body = () => {
             <button
               className="bg-green-200 mx-2  py-2 px-2 rounded-lg text-xl"
               onClick={() => {
-                console.log(searchRestaurant);
+                // console.log(searchRestaurant);
 
                 const filtered = listOfRestaurant?.filter((search) =>
                   search?.info?.name
                     .toLowerCase()
                     .includes(searchRestaurant.toLowerCase())
                 );
-                console.log(filtered);
+                // console.log(filtered);
                 setFilteredRestaurant(filtered);
               }}
             >
@@ -135,7 +136,7 @@ const Body = () => {
               key={restaurant?.info.id}
             >
               {" "}
-              <RestaurantCard resName={restaurant} />
+              <RestaurantCard resName={restaurant} key={restaurant?.info?.id} />
             </Link>
           ))}
         </div>
@@ -148,7 +149,7 @@ const Body = () => {
           {cityMenu?.slice(0, next)?.map((city) => {
             return (
               <div>
-                <CityMenu resCity={city} id={city?.id} />
+                <CityMenu resCity={city} key={city?.id} />
               </div>
             );
           })}
@@ -188,12 +189,11 @@ const Body = () => {
         </h3>
         <div className="pr-28 grid grid-cols-2 gap-2 mb-9">
           {exploreMenu?.map((explore) => {
-            return <ExploreMenu resExplore={explore} id={explore?.id} />;
+            return <ExploreMenu resExplore={explore} key={explore?.id} />;
           })}
         </div>
-       
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
