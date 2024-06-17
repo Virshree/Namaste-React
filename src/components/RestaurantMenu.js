@@ -25,8 +25,8 @@ const RestaurantMenu = () => {
     costForTwo,
   } = resInfo?.cards[2]?.card?.card?.info;
 
-  const { itemCards } =
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+   const { itemCards } =
+   resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
   const categories =
     (resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards).filter(
@@ -61,7 +61,7 @@ const RestaurantMenu = () => {
         <div className="w-6/12 cursor-pointer">
           {categories?.map((category,index) => {
             return (
-              <div className="">
+              <div className="" key={index}>
                 <RestaurantCategory
                   resList={category?.card?.card}
                   key={category?.card?.info?.id}

@@ -39,7 +39,7 @@ const Body = () => {
   const fetchData = async () => {
     const res = await fetch(RESTAURANT_API);
     const json = await res.json();
-    // console.log(json?.data);
+    console.log(json?.data);  
 
     setExploreMenu(json.data?.cards[8]?.card?.card?.brands);
 
@@ -117,6 +117,7 @@ const Body = () => {
               {" "}
               Top Rated Restaurant
             </button>
+         
           </div>
         </div>
         <hr />
@@ -124,16 +125,51 @@ const Body = () => {
           <h2 className="text-3xl   font-bold ">
             Top restaurant chains in Mumbai
           </h2>
+          <button className="bg-white-400 text-black m-2 p-2  text-xl border border-black
+           rounded-lg" 
+           onClick={()=>{
+
+           }}
+           >Pure Veg</button>
+          <button className="bg-white-400 text-black m-2 p-2  text-xl border border-black
+           rounded-lg">Offers</button>
+          <button className="bg-white-400 text-black m-2 p-2  text-xl  border border-black
+          rounded-lg">Fast delivery</button>
+          <button className="bg-white-400 text-black m-2 p-2  text-xl  border border-black
+          rounded-lg">New on Swiggy</button>
+          <button className="bg-white-400 text-black m-2 p-2  text-xl  border border-black
+          rounded-lg"
+          onClick={() => {
+            const filterData = listOfRestaurant?.filter(
+              (res) => res?.info?.avgRating > 4.1
+            );
+
+            setFilteredRestaurant(filterData);
+          }}
+          >Rating 4.0 +</button>
+          <button className="bg-white-400 text-black m-2 p-2  text-xl  border border-black
+          rounded-lg">Rs.300-Rs.600</button>
+          <button className="bg-white-400 text-black m-2 p-2  text-xl border border-black
+          rounded-lg"
+          onClick={() => {
+            const filterData = listOfRestaurant?.filter(
+              (res) => res?.info?.costForTwo < 300
+            );
+              console.log(filterData);
+            setFilteredRestaurant(filterData);
+          }}
+          >Less than Rs.300</button>
         </div>
 
         <br />
 
         <div className="flex flex-wrap  ">
-          {filteredRestaurant?.map((restaurant) => (
+          {filteredRestaurant?.map((restaurant,index) => (
             <Link
               to={"/restaurant/" + restaurant?.info.id}
               style={{ textDecoration: "none", color: "black" }}
-              key={restaurant?.info.id}
+              // key={restaurant?.info.id}
+              key={index}
             >
               {" "}
               <RestaurantCard resName={restaurant} key={restaurant?.info?.id} />
@@ -170,17 +206,17 @@ const Body = () => {
           {cuisneMenu?.slice(0, cuisineNext)?.map((cuisine) => {
             return <CuisineMenu resCuisine={cuisine} key={cuisine?.id} />;
           })}
-
-          {cuisineNext <= cuisneMenu.length && (
-            <button
-              className=" bg-white-400  text-xl p-3  border border-gray
-             rounded-xl"
-              onClick={() => handleMoreCuisineItem()}
-            >
-              {" "}
-              Show More ⬇
-            </button>
-          )}
+  
+            {cuisineNext <= cuisneMenu.length && (
+              <button
+                className=" bg-white-400  text-xl p-3  border border-gray
+              rounded-xl"
+                onClick={() => handleMoreCuisineItem()}
+              >
+                {" "}
+                Show More ⬇
+              </button>
+            )}
         </div>
 
         <hr />

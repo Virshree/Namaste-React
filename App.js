@@ -10,23 +10,16 @@ import RestaurantMenu from "./src/components/RestaurantMenu";
 import Header from "./src/components/Header";
 // import Shimmer from "./src/components/Shimmer";
 import UserContext from "./src/utils/UserContext";
-import appStore from "./src/utils/appStore";
+// import appStore from "./src/utils/appStore";
 import { Provider } from "react-redux";
 import Cart from "./src/components/Cart";
 import Shimmer from "./src/components/Shimmer";
 import { ChakraProvider } from "@chakra-ui/react";
-import { createStore } from "@reduxjs/toolkit";
-import CartReducer from './src/utils/cartSlice';
-
-
-// import Grocery from "./src/components/Grocery";
+import store from "./src/utils/appStore";
 
 const App = () => {
 
   const[userName,setUserName]=useState();
-
- 
-
 
   useEffect(()=>{
     const data={
@@ -36,8 +29,8 @@ const App = () => {
   },[])
   return (
     <div className="">
-<ChakraProvider>
-    <Provider store={appStore} >
+    <ChakraProvider>
+    <Provider store={store} >
     <UserContext.Provider  value={{loggedUser:userName,setUserName}}>
     <div className="app">
     

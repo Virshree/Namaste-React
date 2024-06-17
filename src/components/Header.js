@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import Drawer from "./Drawer";
 import LoginDrawer from "./LoginDrawer";
 
+
 const Header = () => {
   const [btnLogin, setBtnLogin] = useState("Login");
 
@@ -15,8 +16,10 @@ const Header = () => {
   const { loggedUser } = useContext(UserContext);
   // console.log(loggedUser);
 
-  const cartItems = useSelector((store) => store?.cart?.items);
+  const cartItems = useSelector((store) => store.cart.items);
   // console.log(cartItems);
+  const address = useSelector(store => store.location.address)
+
 
   return (
     <div className="flex justify-between p-2 bg-azure-100 shadow-lg">
@@ -24,7 +27,7 @@ const Header = () => {
         <Link to="/">
           <img className="w-26 h-24 cursor-pointer" src={LOGO_URL} />
         </Link>
-
+  
         <button className=" m-2 p-4 text-left">
           <Drawer />
         </button>

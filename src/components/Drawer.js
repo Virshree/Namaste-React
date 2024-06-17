@@ -18,7 +18,7 @@ export default function Drawer() {
   const [cityName, setCityName] = useState("");
   const [filterCity, setFilterCity] = useState([]);
   const [cityInfo, setCityInfo] = useState([]);
-  const [location, setLocation] = useState();
+
 
   const btnRef = React.useRef();
 
@@ -29,9 +29,6 @@ export default function Drawer() {
     const data = await fetch("http://localhost:8000/cities");
     const json = await data.json();
     // console.log(json);
-    console.log(cityInfo[416]?.latitude.toFixed(2));
-    console.log(cityInfo[416]?.longitude.toFixed(2));
-    console.log(cityInfo[416]?.city)
 
     setCityInfo(json);
   };
@@ -158,7 +155,6 @@ const getLocationInfo=async(latitude, longitude)=>{
                    
                    
                    
-            <h3 className="text-xl font-bold m-3 p-3">Location:{location ? <>Your location: {location}</> : null}</h3>
             </div>
           
           </DrawerBody>

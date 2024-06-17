@@ -6,3 +6,5 @@ export const RESTAURANT_API="https://www.swiggy.com/dapi/restaurants/list/v5?lat
 export const LOGO_URL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoTMbb_jDMSO9POq4OyT5EGl625TlJKsCxQA&s";
 
 export const REST_INFO_API_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=" ;
+
+export const CART_API="https://www.swiggy.com/dapi/cart";

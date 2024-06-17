@@ -21,7 +21,7 @@ function RestaurantCard(props) {
   // console.log(loggedUser);
   return (
     <div className="m-4 p-4 w-80 flex-col bg-gray-100 text-xl rounded-lg hover:bg-gray-200 cursor-pointer ">
-      <label className="bg-stone-950	 text-white mb-2 p-2 rounded-lg ">
+      <label className="bg-black	 text-white mb-2 p-2 rounded-lg ">
         {aggregatedDiscountInfoV3?.header
           ? aggregatedDiscountInfoV3?.header
           : "50 % OFF "}{" "}
